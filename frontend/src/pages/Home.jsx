@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Spinner from "../../components/Spinner.jsx";
 import { Link } from "react-router-dom";
@@ -7,10 +7,12 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineAddBox } from "react-icons/md";
 import { MdOutlineDelete } from "react-icons/md";
+import UserContext from '../UserContext';
 
 const Home = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const user = useContext(UserContext);  // Access the context data
 
   useEffect(() => {
     setLoading(true);
@@ -30,6 +32,8 @@ const Home = () => {
     <div>
       {/*Comment: everything is required to be enclosed in a HTML tag */}
       <p>testing testing 1</p>
+
+      {user.name}
       <div className="p-4">
         <div className="flex justify-between items-center">
           <h1 className="text-3x1 my-8">Books List</h1>
